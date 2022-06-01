@@ -166,4 +166,4 @@ class Cube:
 
     def move(self, path: str):
         for p in path:
-            self.moves[p](prim=p.islower())
+            self.moves[p.lower()](prim=p.islower())
