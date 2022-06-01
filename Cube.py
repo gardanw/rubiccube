@@ -156,3 +156,31 @@ class Cube:
                                 ru=-1,
                                 rd=-1)
             self.rotate_face(self.cube[5])
+
+    def move(self, path: str):
+        for p in path:
+            match p:
+                case 'U':
+                    self.u()
+                case 'D':
+                    self.d()
+                case 'F':
+                    self.f()
+                case 'B':
+                    self.b()
+                case 'L':
+                    self.l()
+                case 'R':
+                    self.r()
+                case 'u':
+                    self.u(prim=True)
+                case 'd':
+                    self.d(prim=True)
+                case 'f':
+                    self.f(prim=True)
+                case 'b':
+                    self.b(prim=True)
+                case 'l':
+                    self.l(prim=True)
+                case 'r':
+                    self.r(prim=True)
