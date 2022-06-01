@@ -57,6 +57,13 @@ class Cube:
                           'f': self.cube[4],
                           'b': self.cube[5]}
 
+        self.moves = {'u': self.u,
+                      'd': self.d,
+                      'r': self.r,
+                      'l': self.l,
+                      'f': self.f,
+                      'b': self.b}
+
     def u(self, prim=False):
         if prim:
             self.side_wall_move_p(self.cube[5][0, :],
@@ -159,28 +166,4 @@ class Cube:
 
     def move(self, path: str):
         for p in path:
-            match p:
-                case 'U':
-                    self.u()
-                case 'D':
-                    self.d()
-                case 'F':
-                    self.f()
-                case 'B':
-                    self.b()
-                case 'L':
-                    self.l()
-                case 'R':
-                    self.r()
-                case 'u':
-                    self.u(prim=True)
-                case 'd':
-                    self.d(prim=True)
-                case 'f':
-                    self.f(prim=True)
-                case 'b':
-                    self.b(prim=True)
-                case 'l':
-                    self.l(prim=True)
-                case 'r':
-                    self.r(prim=True)
+            self.moves[p](prim=p.islower())
