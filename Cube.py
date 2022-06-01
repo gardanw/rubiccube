@@ -1,33 +1,8 @@
 import numpy as np
+from myfunc.myfunc import *
 
 
 class Cube:
-    @staticmethod
-    def rotate_face(face):
-        face[:] = face.T
-        face[:, [2, 0]] = face[:, [0, 2]]
-
-    @staticmethod
-    def rotate_face_p(face):
-        face[:, [2, 0]] = face[:, [0, 2]]
-        face[:] = face.T
-
-    @staticmethod
-    def side_wall_move(u, d, r, l, ru=1, rd=1, rr=1, rl=1):
-        tu = u.copy()
-        td = d.copy()
-        tr = r.copy()
-        tl = l.copy()
-        u[:], d[:], r[:], l[:] = tl[::rl], tr[::rr], tu[::ru], td[::rd]
-
-    @staticmethod
-    def side_wall_move_p(u, d, r, l, ru=1, rd=1, rr=1, rl=1):
-        tu = u.copy()
-        td = d.copy()
-        tr = r.copy()
-        tl = l.copy()
-        u[:], d[:], r[:], l[:] = tr[::rr], tl[::rl], td[::rd], tu[::ru]
-
     def __init__(self):
         up    = np.array([['1y', '2y', '3y'],
                           ['4y', '5y', '6y'],
@@ -66,103 +41,103 @@ class Cube:
 
     def u(self, prim=False):
         if prim:
-            self.side_wall_move_p(self.cube[5][0, :],
-                                  self.cube[4][0, :],
-                                  self.cube[2][0, :],
-                                  self.cube[3][0, :])
-            self.rotate_face_p(self.cube[0])
+            side_wall_move_p(self.cube[5][0, :],
+                             self.cube[4][0, :],
+                             self.cube[2][0, :],
+                             self.cube[3][0, :])
+            rotate_face_p(self.cube[0])
         else:
-            self.side_wall_move(self.cube[5][0, :],
-                                self.cube[4][0, :],
-                                self.cube[2][0, :],
-                                self.cube[3][0, :])
-            self.rotate_face(self.cube[0])
+            side_wall_move(self.cube[5][0, :],
+                           self.cube[4][0, :],
+                           self.cube[2][0, :],
+                           self.cube[3][0, :])
+            rotate_face(self.cube[0])
 
     def d(self, prim=False):
         if prim:
-            self.side_wall_move_p(self.cube[4][2, :],
-                                  self.cube[5][2, :],
-                                  self.cube[2][2, :],
-                                  self.cube[3][2, :])
-            self.rotate_face_p(self.cube[1])
+            side_wall_move_p(self.cube[4][2, :],
+                             self.cube[5][2, :],
+                             self.cube[2][2, :],
+                             self.cube[3][2, :])
+            rotate_face_p(self.cube[1])
         else:
-            self.side_wall_move(self.cube[4][2, :],
-                                self.cube[5][2, :],
-                                self.cube[2][2, :],
-                                self.cube[3][2, :])
-            self.rotate_face(self.cube[1])
+            side_wall_move(self.cube[4][2, :],
+                           self.cube[5][2, :],
+                           self.cube[2][2, :],
+                           self.cube[3][2, :])
+            rotate_face(self.cube[1])
 
     def r(self, prim=False):
         if prim:
-            self.side_wall_move_p(self.cube[0][:, 2],
-                                  self.cube[1][:, 2],
-                                  self.cube[5][:, 0],
-                                  self.cube[4][:, 2],
-                                  rd=-1,
-                                  rr=-1)
-            self.rotate_face_p(self.cube[2])
+            side_wall_move_p(self.cube[0][:, 2],
+                             self.cube[1][:, 2],
+                             self.cube[5][:, 0],
+                             self.cube[4][:, 2],
+                             rd=-1,
+                             rr=-1)
+            rotate_face_p(self.cube[2])
         else:
-            self.side_wall_move(self.cube[0][:, 2],
-                                self.cube[1][:, 2],
-                                self.cube[5][:, 0],
-                                self.cube[4][:, 2],
-                                ru=-1,
-                                rr=-1)
-            self.rotate_face(self.cube[2])
+            side_wall_move(self.cube[0][:, 2],
+                           self.cube[1][:, 2],
+                           self.cube[5][:, 0],
+                           self.cube[4][:, 2],
+                           ru=-1,
+                           rr=-1)
+            rotate_face(self.cube[2])
 
     def l(self, prim=False):
         if prim:
-            self.side_wall_move_p(self.cube[0][:, 0],
-                                  self.cube[1][:, 0],
-                                  self.cube[4][:, 0],
-                                  self.cube[5][:, 2],
-                                  ru=-1,
-                                  rl=-1)
-            self.rotate_face_p(self.cube[3])
+            side_wall_move_p(self.cube[0][:, 0],
+                             self.cube[1][:, 0],
+                             self.cube[4][:, 0],
+                             self.cube[5][:, 2],
+                             ru=-1,
+                             rl=-1)
+            rotate_face_p(self.cube[3])
         else:
-            self.side_wall_move(self.cube[0][:, 0],
-                                self.cube[1][:, 0],
-                                self.cube[4][:, 0],
-                                self.cube[5][:, 2],
-                                rd=-1,
-                                rl=-1)
-            self.rotate_face(self.cube[3])
+            side_wall_move(self.cube[0][:, 0],
+                           self.cube[1][:, 0],
+                           self.cube[4][:, 0],
+                           self.cube[5][:, 2],
+                           rd=-1,
+                           rl=-1)
+            rotate_face(self.cube[3])
 
     def f(self, prim=False):
         if prim:
-            self.side_wall_move_p(self.cube[0][2, :],
-                                  self.cube[1][0, :],
-                                  self.cube[2][:, 0],
-                                  self.cube[3][:, 2],
-                                  ru=-1,
-                                  rd=-1)
-            self.rotate_face_p(self.cube[4])
+            side_wall_move_p(self.cube[0][2, :],
+                             self.cube[1][0, :],
+                             self.cube[2][:, 0],
+                             self.cube[3][:, 2],
+                             ru=-1,
+                             rd=-1)
+            rotate_face_p(self.cube[4])
         else:
-            self.side_wall_move(self.cube[0][2, :],
-                                self.cube[1][0, :],
-                                self.cube[2][:, 0],
-                                self.cube[3][:, 2],
-                                rl=-1,
-                                rr=-1)
-            self.rotate_face(self.cube[4])
+            side_wall_move(self.cube[0][2, :],
+                           self.cube[1][0, :],
+                           self.cube[2][:, 0],
+                           self.cube[3][:, 2],
+                           rl=-1,
+                           rr=-1)
+            rotate_face(self.cube[4])
 
     def b(self, prim=False):
         if prim:
-            self.side_wall_move_p(self.cube[0][0, :],
-                                  self.cube[1][2, :],
-                                  self.cube[3][:, 0],
-                                  self.cube[2][:, 2],
-                                  rr=-1,
-                                  rl=-1)
-            self.rotate_face_p(self.cube[5])
+            side_wall_move_p(self.cube[0][0, :],
+                             self.cube[1][2, :],
+                             self.cube[3][:, 0],
+                             self.cube[2][:, 2],
+                             rr=-1,
+                             rl=-1)
+            rotate_face_p(self.cube[5])
         else:
-            self.side_wall_move(self.cube[0][0, :],
-                                self.cube[1][2, :],
-                                self.cube[3][:, 0],
-                                self.cube[2][:, 2],
-                                ru=-1,
-                                rd=-1)
-            self.rotate_face(self.cube[5])
+            side_wall_move(self.cube[0][0, :],
+                           self.cube[1][2, :],
+                           self.cube[3][:, 0],
+                           self.cube[2][:, 2],
+                           ru=-1,
+                           rd=-1)
+            rotate_face(self.cube[5])
 
     def move(self, path: str):
         for p in path:
@@ -174,3 +149,14 @@ class Cube:
             s += np.random.choice(['U', 'u', 'D', 'd', 'F', 'f', 'B', 'b', 'R', 'r', 'L', 'l'])
         self.move(s)
         return s
+
+    def white_cross(self):
+        for w in ['2w', '4w', '6w', '8w']:
+            wrc = np.where(self.cube == w)
+            match wrc[0][0]:
+                case 0:
+                    white_on_up(self, w)
+                case 1:
+                    white_on_down(self, w)
+                case _:
+                    white_on_side(self, w, wrc[0][0], wrc[1][0])
