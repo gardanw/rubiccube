@@ -167,3 +167,10 @@ class Cube:
     def move(self, path: str):
         for p in path:
             self.moves[p.lower()](prim=p.islower())
+
+    def shuffle(self, i: int = 20):
+        s = ''
+        for _ in range(i):
+            s += np.random.choice(['U', 'u', 'D', 'd', 'F', 'f', 'B', 'b', 'R', 'r', 'L', 'l'])
+        self.move(s)
+        return s
