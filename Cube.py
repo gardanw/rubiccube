@@ -160,3 +160,14 @@ class Cube:
                     white_on_down(self, w)
                 case _:
                     white_on_side(self, w, wrc[0][0], wrc[1][0])
+
+    def white_corners(self):
+        for w in ['1w', '3w', '7w', '9w']:
+            wrc = np.where(self.cube == w)
+            match wrc[0][0]:
+                case 0:
+                    corn_on_up(self, w)
+                case 1:
+                    corn_on_down(self, w, wrc[1][0], wrc[2][0])
+                case _:
+                    corn_on_side(self, w, wrc[0][0], wrc[1][0], wrc[2][0])
