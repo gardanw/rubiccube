@@ -204,3 +204,37 @@ class Cube:
                             edge_on_c_1(self, e)
                         case 2:
                             edge_on_c_2(self, e, wrc[0][0])
+
+    def yellow_cross(self):
+        up_cross = [
+            "y" in p
+            for p in [
+                self.cube[0, 0, 1],
+                self.cube[0, 1, 0],
+                self.cube[0, 1, 2],
+                self.cube[0, 2, 1],
+            ]
+        ]
+        match up_cross:
+            case [True, True, False, False]:
+                path = "FRUruRUruf"
+                self.move(path)
+            case [True, False, True, False]:
+                path = "LFUfuFUful"
+                self.move(path)
+            case [False, True, False, True]:
+                path = "RBUbuBUbur"
+                self.move(path)
+            case [False, False, True, True]:
+                path = "BLUluLUlub"
+                self.move(path)
+            case [True, False, False, True]:
+                path = "RBUbur"
+                self.move(path)
+            case [False, True, True, False]:
+                path = "FRUruf"
+                self.move(path)
+            case [False, False, False, False]:
+                path = "FRUruRUrufRBUbur"
+                self.move(path)
+        sort_yellow_cross(self)

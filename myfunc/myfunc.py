@@ -317,3 +317,28 @@ def edge_on_c_2(cube, edge, wall):
             path = "LulubUB"
             cube.move(path)
             edge_on_up(cube, edge)
+
+
+def sort_yellow_cross(cube):
+    while cube.cube[0, 0, 1] != "2y":
+        cube.u()
+    bottom_cross = [cube.cube[0, 1, 0], cube.cube[0, 1, 2], cube.cube[0, 2, 1]]
+    match bottom_cross:
+        case ["8y", "4y", "6y"] | ["6y", "8y", "4y"]:
+            while [cube.cube[0, 1, 0], cube.cube[0, 1, 2], cube.cube[0, 2, 1]] != [
+                "4y",
+                "6y",
+                "8y",
+            ]:
+                path = "LUUluLul"
+                cube.move(path)
+        case ["4y", "8y", "6y"] | ["8y", "6y", "4y"] | ["6y", "4y", "8y"]:
+            while [cube.cube[0, 1, 0], cube.cube[0, 1, 2], cube.cube[0, 2, 1]] != [
+                "8y",
+                "6y",
+                "4y",
+            ]:
+                path = "LUUluLul"
+                cube.move(path)
+            path = "uRUUruRur"
+            cube.move(path)
