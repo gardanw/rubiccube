@@ -189,3 +189,18 @@ class Cube:
                     corn_on_down(self, w, wrc[1][0], wrc[2][0])
                 case _:
                     corn_on_side(self, w, wrc[0][0], wrc[1][0], wrc[2][0])
+
+    def second_layer(self):
+        for e in ['4r', '4b', '4o', '4g']:
+            wrc = np.where(self.cube == e)
+            match wrc[0][0]:
+                case 0:
+                    edge_on_up(self, e)
+                case _:
+                    match wrc[2][0]:
+                        case 0:
+                            edge_on_c_0(self, e, wrc[0][0])
+                        case 1:
+                            edge_on_c_1(self, e)
+                        case 2:
+                            edge_on_c_2(self, e, wrc[0][0])
