@@ -254,3 +254,10 @@ class Cube:
                         move_first_yellow_corners(self, "FubUfuBU")
         sort_yellow_corners(self)
         rotate_yellow_corners(self)
+
+    def solve_cube(self):
+        self.white_cross()
+        self.white_corners()
+        self.second_layer()
+        self.yellow_cross()
+        self.yellow_corners()
