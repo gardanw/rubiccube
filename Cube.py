@@ -191,7 +191,7 @@ class Cube:
                     corn_on_side(self, w, wrc[0][0], wrc[1][0], wrc[2][0])
 
     def second_layer(self):
-        for e in ['4r', '4b', '4o', '4g']:
+        for e in ["4r", "4b", "4o", "4g"]:
             wrc = np.where(self.cube == e)
             match wrc[0][0]:
                 case 0:

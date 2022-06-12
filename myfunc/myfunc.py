@@ -229,91 +229,91 @@ def corn_on_side(cube, piece, side, row, column):
 
 def edge_on_up(cube, edge):
     match edge:
-        case '4r':
-            while cube.cube[0, 0, 1] != '4r':
+        case "4r":
+            while cube.cube[0, 0, 1] != "4r":
                 cube.u()
-            path = 'FufulUL'
+            path = "FufulUL"
             cube.move(path)
-        case '4b':
-            while cube.cube[0, 1, 2] != '4b':
+        case "4b":
+            while cube.cube[0, 1, 2] != "4b":
                 cube.u()
-            path = 'LulubUB'
+            path = "LulubUB"
             cube.move(path)
-        case '4o':
-            while cube.cube[0, 2, 1] != '4o':
+        case "4o":
+            while cube.cube[0, 2, 1] != "4o":
                 cube.u()
-            path = 'BuburUR'
+            path = "BuburUR"
             cube.move(path)
-        case '4g':
-            while cube.cube[0, 1, 0] != '4g':
+        case "4g":
+            while cube.cube[0, 1, 0] != "4g":
                 cube.u()
-            path = 'RurufUF'
+            path = "RurufUF"
             cube.move(path)
 
 
 def edge_on_c_0(cube, edge, wall):
     match wall:
         case 2:
-            if edge != '4g':
-                path = 'fUFURur'
+            if edge != "4g":
+                path = "fUFURur"
                 cube.move(path)
                 edge_on_up(cube, edge)
         case 3:
-            if edge != '4b':
-                path = 'bUBULul'
+            if edge != "4b":
+                path = "bUBULul"
                 cube.move(path)
                 edge_on_up(cube, edge)
         case 4:
-            if edge != '4r':
-                path = 'lULUFuf'
+            if edge != "4r":
+                path = "lULUFuf"
                 cube.move(path)
                 edge_on_up(cube, edge)
         case 5:
-            if edge != '4o':
-                path = 'rURUBub'
+            if edge != "4o":
+                path = "rURUBub"
                 cube.move(path)
                 edge_on_up(cube, edge)
 
 
 def edge_on_c_1(cube, edge):
     match edge:
-        case '4r':
-            while cube.cube[2, 0, 1] != '4r':
+        case "4r":
+            while cube.cube[2, 0, 1] != "4r":
                 cube.u()
-            path = 'lULUFuf'
+            path = "lULUFuf"
             cube.move(path)
-        case '4b':
-            while cube.cube[4, 0, 1] != '4b':
+        case "4b":
+            while cube.cube[4, 0, 1] != "4b":
                 cube.u()
-            path = 'bUBULul'
+            path = "bUBULul"
             cube.move(path)
-        case '4o':
-            while cube.cube[3, 0, 1] != '4o':
+        case "4o":
+            while cube.cube[3, 0, 1] != "4o":
                 cube.u()
-            path = 'rURUBub'
+            path = "rURUBub"
             cube.move(path)
-        case '4g':
-            while cube.cube[5, 0, 1] != '4g':
+        case "4g":
+            while cube.cube[5, 0, 1] != "4g":
                 cube.u()
-            path = 'fUFURur'
+            path = "fUFURur"
             cube.move(path)
 
 
 def edge_on_c_2(cube, edge, wall):
     match wall:
         case 2:
-            path = 'BuburUR'
+            path = "BuburUR"
             cube.move(path)
             edge_on_up(cube, edge)
         case 3:
-            path = 'FufulUL'
+            path = "FufulUL"
             cube.move(path)
             edge_on_up(cube, edge)
         case 4:
-            path = 'RurufUF'
+            path = "RurufUF"
             cube.move(path)
             edge_on_up(cube, edge)
         case 5:
-            path = 'LulubUB'
+            path = "LulubUB"
             cube.move(path)
             edge_on_up(cube, edge)
