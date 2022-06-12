@@ -4,7 +4,7 @@ import numpy as np
 from Cube import Cube
 
 
-class CubeRotateTest(unittest.TestCase):
+class CubeYellowCrossTest(unittest.TestCase):
     def setUp(self):
         self._cube = Cube()
         self._cube.shuffle()
@@ -12,7 +12,7 @@ class CubeRotateTest(unittest.TestCase):
         self._cube.white_corners()
         self._cube.second_layer()
 
-    def test_first_layer(self):
+    def test_yellow_cross(self):
         self._cube.yellow_cross()
         np.testing.assert_array_equal(self._cube.cube[0, 0, 1], "2y")
         np.testing.assert_array_equal(self._cube.cube[0, 1, 0], "4y")

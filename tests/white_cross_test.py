@@ -4,7 +4,7 @@ import numpy as np
 from Cube import Cube
 
 
-class CubeRotateTest(unittest.TestCase):
+class CubeWhiteCrossTest(unittest.TestCase):
     def setUp(self):
         self._cube = Cube()
         self._cube.shuffle()

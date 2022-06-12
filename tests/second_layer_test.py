@@ -4,14 +4,14 @@ import numpy as np
 from Cube import Cube
 
 
-class CubeRotateTest(unittest.TestCase):
+class CubeSecondLayerTest(unittest.TestCase):
     def setUp(self):
         self._cube = Cube()
         self._cube.shuffle()
         self._cube.white_cross()
         self._cube.white_corners()
 
-    def test_first_layer(self):
+    def test_Second_layer(self):
         self._cube.second_layer()
         np.testing.assert_array_equal(
             self._cube.cube[1],
