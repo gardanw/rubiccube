@@ -238,3 +238,19 @@ class Cube:
                 path = "FRUruRUrufRBUbur"
                 self.move(path)
         sort_yellow_cross(self)
+
+    def yellow_corners(self):
+        wrc = np.where(self.cube == "1r")
+        match wrc[0][0]:
+            case 2 | 4:
+                move_first_yellow_corners(self, "FubUfuBU")
+            case 3 | 5:
+                move_first_yellow_corners(self, "BufUbuFU")
+            case _:
+                match wrc[2][0]:
+                    case 0:
+                        move_first_yellow_corners(self, "BufUbuFU")
+                    case 2:
+                        move_first_yellow_corners(self, "FubUfuBU")
+        sort_yellow_corners(self)
+        rotate_yellow_corners(self)

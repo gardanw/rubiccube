@@ -342,3 +342,24 @@ def sort_yellow_cross(cube):
                 cube.move(path)
             path = "uRUUruRur"
             cube.move(path)
+
+
+def move_first_yellow_corners(cube, path):
+    while cube.cube[0, 2, 0] not in ["7y", "1r", "3b"]:
+        cube.move(path)
+
+
+def sort_yellow_corners(cube):
+    while cube.cube[0, 2, 2] not in ["9y", "3r", "1g"]:
+        path = "RulUruLU"
+        cube.move(path)
+
+
+def rotate_yellow_corners(cube):
+    for c in ["1y", "7y", "9y", "3y"]:
+        while cube.cube[0, 0, 0] != c:
+            path = "BDbd"
+            cube.move(path)
+        cube.u()
+    while cube.cube[0, 0, 0] != "1y":
+        cube.u()
